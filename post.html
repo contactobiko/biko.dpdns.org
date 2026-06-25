@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>biko</title>
-  <meta name="description" content="notes, half-finished thoughts, and things worth keeping." />
 
-  <!-- one deliberate display font, loaded light (variable, swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -16,6 +14,10 @@
 
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="data:," />
+
+  <!-- markdown rendering + sanitizing, loaded only on the post page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.5/purify.min.js"></script>
 </head>
 <body>
   <div class="shell">
@@ -23,7 +25,7 @@
       <div class="wrap">
         <a href="index.html" class="wordmark">bik<span>o</span></a>
         <div class="header-right">
-          <span class="header-tagline">file → folder → page</span>
+          <a href="index.html" class="back-link">← all posts</a>
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <circle cx="12" cy="12" r="4.2"/>
@@ -37,30 +39,18 @@
       </div>
     </header>
 
-    <main class="wrap">
-      <section class="hero">
-        <h1>Notes, mostly unfinished.</h1>
-        <p>Everything here started as a markdown file dropped into a folder. Click one to read it.</p>
-      </section>
-
-      <div class="controls">
-        <div class="search-field">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <circle cx="11" cy="11" r="7"/>
-            <path d="M21 21l-4.3-4.3"/>
-          </svg>
-          <input type="search" id="search-input" placeholder="Loading…" disabled />
-        </div>
-        <div class="tag-filters" id="tag-filters"></div>
+    <main class="wrap" style="max-width: var(--measure);">
+      <div class="article-head" id="article-head">
+        <h1 id="article-title">Loading…</h1>
+        <div class="article-meta" id="article-meta"></div>
       </div>
-
-      <div class="post-grid" id="post-grid"></div>
+      <article class="article-body" id="article-body"></article>
     </main>
 
     <footer class="site-footer">
-      <div class="wrap">
+      <div class="wrap" style="max-width: var(--measure); margin: 0 auto;">
         <span>© <span id="year"></span> biko</span>
-        <span>built with markdown, not magic</span>
+        <a href="index.html">← back to all posts</a>
       </div>
     </footer>
   </div>
@@ -70,6 +60,6 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     bindThemeToggle(document.getElementById("theme-toggle"));
   </script>
-  <script src="assets/js/home.js"></script>
+  <script src="assets/js/post.js"></script>
 </body>
 </html>
