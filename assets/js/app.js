@@ -12,17 +12,24 @@ const CONFIG = {
 
 /**
  * Parse a very small subset of YAML front matter:
- *   ---
+ *   ~~~
  *   title: Hello world
  *   date: 2026-06-25
  *   excerpt: A short summary.
  *   tags: [one, two]
- *   ---
+ *   ~~~
  *   body content...
  * Returns { data, content }.
+ *
+ * Note: deliberately uses ~~~ instead of the more common --- fence.
+ * GitHub Pages' Jekyll build auto-detects a leading "---" block as
+ * page front matter and converts the .md file into a same-named .html
+ * page (consuming the original .md route), even when .nojekyll should
+ * prevent it. Using ~~~ keeps these files invisible to Jekyll entirely,
+ * so they're always served as plain static markdown.
  */
 function parseFrontMatter(raw) {
-  const fmMatch = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
+  const fmMatch = raw.match(/^~~~\s*\n([\s\S]*?)\n~~~\s*\n?/);
   if (!fmMatch) return { data: {}, content: raw };
 
   const data = {};
