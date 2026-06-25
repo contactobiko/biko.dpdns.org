@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "hello-world",
+    "title": "Hello, this is biko",
+    "date": "2026-06-25",
+    "excerpt": "How this site works, in plain terms — drop a file in a folder, push, and it shows up here.",
+    "tags": [
+      "meta",
+      "howto"
+    ],
+    "readingTime": "1 min read"
+  }
+]
