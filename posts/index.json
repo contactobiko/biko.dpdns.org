@@ -10,5 +10,17 @@
       "customization"
     ],
     "readingTime": "9 min read"
+  },
+  {
+    "slug": "quaver-skin-maker",
+    "title": "Quaver skin maker",
+    "date": "2026-06-26",
+    "excerpt": "This simple HTML will let you create your own custom skin for quaver!",
+    "tags": [
+      "Quaver",
+      "Games",
+      "HTML"
+    ],
+    "readingTime": "1 min read"
   }
 ]
